@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+body{
+  font-family: 'Ubuntu';
+}
+.my-color{
+  background-color: #212529 !important;
+}
+.a{
+  color: #fff !important;
+}
+.espac{
+  text-align: center;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #543074 !important;
+}
+.btn-primary {
+    background-color: #543074 !important;
+    border-color: #543074 !important;
+}
+.butt{
+  margin-bottom: 12px;
+}
+.button-a{
+    -webkit-appearance: none !important;
+}
