@@ -5,13 +5,14 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Administrador de usuarios</title>
+		<link rel="shortcut icon" href="public/img/Logo-Diclase.ico">
 		<link rel="stylesheet" href="public/css/bootstrap.min.css">
 		<link rel="stylesheet" href="public/css/estilos.css">
 	</head>
 	<body>
 		<nav class="navbar navbar-light my-color">
 		  <a class="navbar-brand" href="#">
-		    <img src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+		    <img src="public/img/Logo-Diclase.ico" width="30" height="30" alt="">
 		  </a>
 			<ul class="nav nav-pills">
 			  <li class="nav-item">

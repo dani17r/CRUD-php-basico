@@ -12,11 +12,11 @@ body{
   text-align: center;
 }
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    background-color: #543074 !important;
+    background-color: #43aea3 !important;
 }
 .btn-primary {
-    background-color: #543074 !important;
-    border-color: #543074 !important;
+    background-color: #43aea3 !important;
+    border-color: #43aea3 !important;
 }
 .butt{
   margin-bottom: 12px;
