@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="public/css/estilos.css">
 	</head>
 	<body>
+		
 		<nav class="navbar navbar-light my-color">
 		  <a class="navbar-brand" href="#">
 		    <img src="public/img/Logo-Diclase.ico" width="30" height="30" alt="">
@@ -88,8 +89,8 @@
 		</div>
 		<br><br>
 		<!--  -->
-		<?php if (!$dato_devuelto=="") { ?>
 
+		<?php if (!$dato_devuelto=="") { ?>
 		<div class="container">
 			<div class="row justify-content-center">
 				<h2>Lista de usuario</h2>
