@@ -1,4 +1,3 @@
-<?php include 'controllers/crud/read.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -10,7 +9,7 @@
 		<link rel="stylesheet" href="public/css/estilos.css">
 	</head>
 	<body>
-		
+
 		<nav class="navbar navbar-light my-color">
 		  <a class="navbar-brand" href="#">
 		    <img src="public/img/Logo-Diclase.ico" width="30" height="30" alt="">
@@ -32,6 +31,7 @@
 		</nav>
 		<br>
 		<!--  -->
+		<?php include 'controllers/crud/read.php'; ?>
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-6">
