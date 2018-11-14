@@ -1,18 +1,11 @@
 <?php
   include 'conexion.php';
 
-  $id =($_POST['id']);
-  $nombre =($_POST['name']);
-  $apellido =($_POST ['lastname']);
-  $email =($_POST ['email']);
-  $usuario =($_POST ['username']);
-  $contra =($_POST ['password']);
+  $post = json_decode(file_get_contents('php://input'), true);
 
-  $editar = mysqli_query($conexion," UPDATE usuarios SET name='$nombre', lastname='$apellido', email='$email', username='$usuario', password='$contra' WHERE id='$id' ");
+  $id=$post['id'];
+  $tarea =$post['task'];
+  $descipcion =$post ['description'];
 
-  if ($editar){
-    header('Location: ../../index.php');
-  }else {
-    echo "no se edito";
-  }
+  $update=mysqli_query($conexion," UPDATE tareas SET task='$tarea', description='$descipcion' WHERE id='$id' ");
   ?>

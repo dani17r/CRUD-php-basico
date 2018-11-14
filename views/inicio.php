@@ -35,100 +35,62 @@
 		<!--  -->
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-6">
-					<h1 class="espac">Registro de usuarios</h1>
-					<form @submit.prevent="login()" action="controllers/crud/create.php" method="post">
+				<div class="col-4">
+					<h2 class="espac">Registro de usuarios</h2>
+					<form @submit.prevent="login()">
 						<div class="form-group">
-							<input autocomplete="off" v-model="task" type="text" class="form-control" id="1" placeholder="tarea">
+							<input autocomplete="off" v-if="editar" v-model="task" type="text" class="form-control" id="1" placeholder="tarea - edicion">
+							<input autocomplete="off" v-else v-model="task" type="text" class="form-control" id="1" placeholder="tarea">
 						</div>
 						<div class="form-group">
-							<input autocomplete="off" v-model="description" type="text" class="form-control" id="2" placeholder="descripcion">
+							<textarea autocomplete="off" v-if="editar" v-model="description" type="text" class="form-control" id="2" placeholder="descripcion - edicion" rows="2" ></textarea>
+							<textarea autocomplete="off" v-else v-model="description" type="text" class="form-control" id="2" placeholder="descripcion" rows="2" ></textarea>
 						</div>
-						<button type="submit" class="btn btn-primary w-100">Aceptar</button>
+						<input v-if="editar" @click="update" class="btn btn-success w-100" value="Guardar">
+						<button v-else type="submit" class="btn btn-success w-100">Aceptar</button>
+						<input type="button" v-if="editar" @click="limpiar" class="btn btn-secondary w-100 marg-top-8" value="cancelar">
 					</form>
+					<span class="w-100 marg-top-8 menss">{{ mensaje }}</span>
 				</div>
+				<!--  -->
+				<div class="col-8">
+					<h2>Lista de usuario</h2>
+					<table class="table">
+					  <thead class="thead-dark">
+					    <tr>
+					      <th scope="col">Id</th>
+					      <th scope="col">tarea</th>
+					      <th scope="col">descripcion</th>
+					      <th scope="col"></th>
+					      <th scope="col"></th>
+					    </tr>
+					  </thead>
+					  <tbody v-for="item in lists">
+							 <tr v-if="!item==0">
+							      <td>{{ item[0] }}</td>
+							      <td>{{ item[1] }}</td>
+							      <td>{{ item[2] }}</td>
+										<td>
+											<button @click="_editar(item[0],item[1],item[2])" class="btn btn-success">Editar</button>
+										</td>
+										<td>
+											<button @click="_eliminar(item[0])" class="btn btn-danger">Eliminar</button>
+										</td>
+									</tr>
+					  </tbody>
+					</table>
+				</div>
+				<!--  -->
 			</div>
 		</div>
-		<br><br>
 		<!--  -->
-
-
-		<div class="container">
-			<div class="row justify-content-center">
-				<h2>Lista de usuario</h2>
-				<table class="table">
-				  <thead class="thead-dark">
-				    <tr>
-				      <th scope="col">Id</th>
-				      <th scope="col">tarea</th>
-				      <th scope="col">descripcion</th>
-				      <th scope="col"></th>
-				      <th scope="col"></th>
-				    </tr>
-				  </thead>
-				  <tbody v-for="item in lists">
-						 <tr v-if="!item==0">
-						      <td>{{ item[0] }}</td>
-						      <td>{{ item[1] }}</td>
-						      <td>{{ item[2] }}</td>
-									<?php
-										if (isset($_GET['id'])) {
-											$id = ($_GET['id']);
-											$tarea = ($_GET['task']);
-											$description = ($_GET['description']);
-										}
-									?>
-									<td>
-										<a href="index.php?id=<?php echo $id; ?>&task=<?php echo $tarea; ?>&description=<?php echo $description; ?>" type="button" class="btn btn-success">Editar</a>
-									</td>
-									<td>
-										<a href="controllers/crud/delete.php?id=<?php echo $id; ?>" type="button" class="btn btn-danger">Eliminar</a>
-									</td>
-								</tr>
-				  </tbody>
-				</table>
-			</div>
-		</div>
-
 	</div>
 
 		<script src="public/js/jquery-3.3.1.min.js" ></script>
 		<script src="public/js/popper.min.js"></script>
 		<script src="public/js/bootstrap.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.js"></script>
-		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-		<script>
-			new Vue({
-				el: '#main',
-				created: function() {
-						this.getUsers()
-				},
-				data:{
-					task:'',
-					description:'',
-					lists:[]
-				},
-				methods: {
-					getUsers: function() {
-						this.$http.get('controllers/url/json-read.php').then(function(response){
-							var datos = response.data
-							if (datos==0) {
-								this.lists=0
-							}else {
-								this.lists = response.data
-							}
-						})
-					},
-					login: function() {
-						this.$http.post('controllers/crud/create.php',{
-							task: this.task,
-							description: this.description
-						})
-						this.getUsers()
-					}
-				}
-			})
-		</script>
+		<script src="public/js/vue.js"></script>
+		<script src="public/js/vue-resource.js"></script>
+		<script src="public/js/crud.js"></script>
 	</body>
 </html>

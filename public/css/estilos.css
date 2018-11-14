@@ -24,3 +24,12 @@ body{
 .button-a{
     -webkit-appearance: none !important;
 }
+.marg-top-8{
+  margin-top: 8px;
+}
+.menss{
+  display: block;
+  text-align: center;
+  color: #da0007;
+  font-size: 20px;
+}
